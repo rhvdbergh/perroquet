@@ -4,6 +4,23 @@ const SpeechRecognitionEvent = webkitSpeechRecognitionEvent || SpeechRecognition
 
 const recognition = new SpeechRecognition();
 
+const prepend = [
+  'Let me just make sure, you are saying', 
+  'I see. You are saying',
+  'Uh-huh. So'
+];
+
+const append = [
+  'Can you elaborate on that?',
+  'How does that make you feel?',
+  'Why do you say that?',
+  'Why?',
+  'How would you describe that to your best friend?',
+];
+
+const randNum = (forLength) => {
+  return Math.floor(Math.random() * forLength);
+}
 
 const button = document.querySelector('#startButton');
 const feedback = document.querySelector('#feedback');
@@ -22,6 +39,7 @@ recognition.onresult = (evt) => {
   for (i = 0; i <= len; i++) {
     str += evt.results[i][0].transcript + ' ';
   }
+
   feedback.innerHTML=str;
-  question.innerHTML="So, I hear you say that " + str + "- how do you feel about that?";
+  question.innerHTML=prepend[randNum(prepend.length)] + " " + str.trim() + ". " + append[randNum(append.length)];
 }
