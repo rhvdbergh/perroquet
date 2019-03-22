@@ -1,7 +1,82 @@
-h1 {
-  font-family: 'Roboto', sans-serif;
+* {
+  padding: 0;
+  margin: 0;
 }
 
-p {
+h1 {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+  padding: 5px;
+}
+
+p, span, div {
   font-family: 'Open Sans', sans-serif;
+}
+
+.heading {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #9dcaec;
+}
+
+.toggleButtonDiv {
+  padding-top: 40px;
+  padding-bottom: 50px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+#toggleButton {
+  border-radius: 15px;
+  padding: 10px;
+  background-color: #9bdfdd;
+}
+
+#toggleButton:hover {
+  cursor: pointer;
+}
+
+#toggleButtonDiv:hover {
+  cursor: pointer;
+}
+
+.lead {
+  text-align: center;
+  padding: 15px;
+  font-size: 1.2em;
+}
+
+#feedbackwindow {
+  display: flex;
+  flex-direction: column;
+  margin-left: 250px;
+  margin-right: 250px;
+  max-width: 1000px;
+}
+
+.feedback {
+  float: left;
+  text-align: left;
+  background-color: blue;
+  color: white;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-width: 600px;
+  padding: 5px;
+}
+
+.question {
+  float: right;
+  text-align: right;
+  background-color: rebeccapurple;
+  color: white;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  max-width: 600px;
+  padding: 5px;
 }

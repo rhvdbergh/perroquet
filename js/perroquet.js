@@ -43,13 +43,15 @@ function replacePronouns(str) {
 
 const button = document.querySelector('#toggleButton');
 const feedbackwindow = document.querySelector('#feedbackwindow');
+let fbdiv;
 let feedback = document.querySelector('.feedback');
 let question = document.querySelector('.question');
+let qdiv;
 
 button.addEventListener('click', () => {
   if (button.innerHTML === 'Pause Session') {
     recognition.stop();
-    button.innerHTML = 'Start Session';
+    button.innerHTML = 'Continue';
   } else {
     recognition.start();
     button.innerHTML = 'Pause Session';
@@ -69,19 +71,21 @@ recognition.onresult = (evt) => {
   }
 
   feedback.innerHTML = sentenceCase(str) + '.';
-  // feedback.removeAttribute('id');
-  feedback = document.createElement("P");
+  fbdiv = document.createElement("DIV");
+  feedback = document.createElement("SPAN");
   feedback.setAttribute('class', 'feedback');
-  feedbackwindow.appendChild(feedback);
+  feedbackwindow.appendChild(fbdiv);
+  fbdiv.appendChild(feedback);
   question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
-  // question.removeAttribute('id');
-  question = document.createElement("P")
+  qdiv = document.createElement("DIV");
+  question = document.createElement("SPAN")
   question.setAttribute('class', 'question');
-  feedbackwindow.appendChild(question);
+  feedbackwindow.appendChild(qdiv);
+  qdiv.appendChild(question);
 
 }
 
 recognition.onend = (evt) => {
-  button.innerHTML = 'Start Session';
+  button.innerHTML = 'Continue';
 }
 
