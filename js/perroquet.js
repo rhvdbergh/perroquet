@@ -29,14 +29,14 @@ function sentenceCase(str) {
 }
 
 function replacePronouns(str) {
-  str.replace(/your/gi, 'my');
-  str.replace(/my/gi, 'your');
-  str.replace(/i\s/gi, "you ");
-  str.replace(/me\s/gi, "you ");
-  str.replace(/you/gi, "I");
-  str.replace(/mine/gi, "yours");
-  str.replace(/yours/gi, "mine");
-  str.replace(/our/gi, "your");
+  // str = str.replace(/your/gi, 'my');
+  // str = str.replace(/my/gi, 'your');
+  // str = str.replace(/i\s/gi, "you ");
+  // str = str.replace(/me\s/gi, "you ");
+  // str = str.replace(/you/gi, "I");
+  // str = str.replace(/mine/gi, "yours");
+  // str = str.replace(/yours/gi, "mine");
+  // str = str.replace(/our/gi, "your");
 
   return str;
 }
