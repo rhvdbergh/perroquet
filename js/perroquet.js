@@ -23,9 +23,9 @@ function randNum(forLength) {
 }
 
 function sentenceCase(str) {
-  
-  const ch = str[0];
-  return ch.toUpperCase() + str.substring(1);
+  trimStr = str.trim();
+  let ch = trimStr[0];
+  return ch.toUpperCase() + trimStr.substring(1);
 }
 
 function replacePronouns(str) {
@@ -60,7 +60,7 @@ recognition.continuous = true;
 recognition.start();
 
 recognition.onresult = (evt) => {
-  console.log(`succes`, evt.results);
+
   const len = evt.results.length - 1;
   let str = '';
 
@@ -68,7 +68,7 @@ recognition.onresult = (evt) => {
     str += evt.results[i][0].transcript + ' ';
   }
 
-  feedback.innerHTML = str.trim(sentenceCase(str)) + '.';
+  feedback.innerHTML = sentenceCase(str) + '.';
   feedback.removeAttribute('id');
   feedback = document.createElement("P");
   feedback.setAttribute('id', 'feedback');
@@ -79,5 +79,9 @@ recognition.onresult = (evt) => {
   question.setAttribute('id', 'question');
   feedbackwindow.appendChild(question);
 
+}
+
+recognition.onend = (evt) => {
+  button.innerHTML = 'Start Session';
 }
 
