@@ -18,28 +18,66 @@ const append = [
   'How would you describe that to your best friend?',
 ];
 
-const randNum = (forLength) => {
+function randNum(forLength) {
   return Math.floor(Math.random() * forLength);
 }
 
-const button = document.querySelector('#startButton');
-const feedback = document.querySelector('#feedback');
-const question = document.querySelector('#question');
+function sentenceCase(str) {
+  
+  const ch = str[0];
+  return ch.toUpperCase() + str.substring(1);
+}
+
+function replacePronouns(str) {
+  str.replace(/your/gi, 'my');
+  str.replace(/my/gi, 'your');
+  str.replace(/i\s/gi, "you ");
+  str.replace(/me\s/gi, "you ");
+  str.replace(/you/gi, "I");
+  str.replace(/mine/gi, "yours");
+  str.replace(/yours/gi, "mine");
+  str.replace(/our/gi, "your");
+
+  return str;
+}
+
+const button = document.querySelector('#toggleButton');
+const feedbackwindow = document.querySelector('#feedbackwindow');
+let feedback = document.querySelector('#feedback');
+let question = document.querySelector('#question');
 
 button.addEventListener('click', () => {
-  console.log('Recognition started.');
-  recognition.start();
+  if (button.innerHTML === 'Pause Session') {
+    recognition.stop();
+    button.innerHTML = 'Start Session';
+  } else {
+    recognition.start();
+    button.innerHTML = 'Pause Session';
+  }
 })
+
+recognition.continuous = true;
+recognition.start();
 
 recognition.onresult = (evt) => {
   console.log(`succes`, evt.results);
   const len = evt.results.length - 1;
   let str = '';
 
-  for (i = 0; i <= len; i++) {
+  for (i = evt.resultIndex; i <= len; i++) {
     str += evt.results[i][0].transcript + ' ';
   }
 
-  feedback.innerHTML=str;
-  question.innerHTML=prepend[randNum(prepend.length)] + " " + str.trim() + ". " + append[randNum(append.length)];
+  feedback.innerHTML = str.trim(sentenceCase(str)) + '.';
+  feedback.removeAttribute('id');
+  feedback = document.createElement("P");
+  feedback.setAttribute('id', 'feedback');
+  feedbackwindow.appendChild(feedback);
+  question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
+  question.removeAttribute('id');
+  question = document.createElement("P")
+  question.setAttribute('id', 'question');
+  feedbackwindow.appendChild(question);
+
 }
+
