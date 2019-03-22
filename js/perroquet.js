@@ -43,8 +43,8 @@ function replacePronouns(str) {
 
 const button = document.querySelector('#toggleButton');
 const feedbackwindow = document.querySelector('#feedbackwindow');
-let feedback = document.querySelector('#feedback');
-let question = document.querySelector('#question');
+let feedback = document.querySelector('.feedback');
+let question = document.querySelector('.question');
 
 button.addEventListener('click', () => {
   if (button.innerHTML === 'Pause Session') {
@@ -69,14 +69,14 @@ recognition.onresult = (evt) => {
   }
 
   feedback.innerHTML = sentenceCase(str) + '.';
-  feedback.removeAttribute('id');
+  // feedback.removeAttribute('id');
   feedback = document.createElement("P");
-  feedback.setAttribute('id', 'feedback');
+  feedback.setAttribute('class', 'feedback');
   feedbackwindow.appendChild(feedback);
   question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
-  question.removeAttribute('id');
+  // question.removeAttribute('id');
   question = document.createElement("P")
-  question.setAttribute('id', 'question');
+  question.setAttribute('class', 'question');
   feedbackwindow.appendChild(question);
 
 }
