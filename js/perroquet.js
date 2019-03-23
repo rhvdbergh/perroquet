@@ -43,10 +43,6 @@ function replacePronouns(str) {
 
 const button = document.querySelector('#toggleButton');
 const feedbackwindow = document.querySelector('#feedbackwindow');
-let fbdiv;
-let feedback = document.querySelector('.feedback');
-let question = document.querySelector('.question');
-let qdiv;
 
 button.addEventListener('click', () => {
   if (button.innerHTML === 'Pause Session') {
@@ -70,15 +66,15 @@ recognition.onresult = (evt) => {
     str += evt.results[i][0].transcript + ' ';
   }
 
+  let fbdiv = document.createElement("DIV");
+  let feedback = document.createElement("SPAN");
   feedback.innerHTML = sentenceCase(str) + '.';
-  fbdiv = document.createElement("DIV");
-  feedback = document.createElement("SPAN");
   feedback.setAttribute('class', 'feedback');
   feedbackwindow.appendChild(fbdiv);
   fbdiv.appendChild(feedback);
+  let qdiv = document.createElement("DIV");
+  let question = document.createElement("SPAN")
   question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
-  qdiv = document.createElement("DIV");
-  question = document.createElement("SPAN")
   question.setAttribute('class', 'question');
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);

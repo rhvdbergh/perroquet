@@ -3,27 +3,16 @@
   margin: 0;
 }
 
-h1 {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  padding: 5px;
+#container {
+  display: flex;
+  flex-direction: column;
 }
 
 p, span, div {
   font-family: 'Open Sans', sans-serif;
 }
 
-.heading {
-  height: 200px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #9dcaec;
-}
-
 .toggleButtonDiv {
-  padding-top: 40px;
-  padding-bottom: 50px;
   margin: auto;
   display: flex;
   justify-content: center;
@@ -31,7 +20,9 @@ p, span, div {
 
 #toggleButton {
   border-radius: 15px;
-  padding: 10px;
+  padding-top: 10px;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
   background-color: #9bdfdd;
 }
 
@@ -43,18 +34,13 @@ p, span, div {
   cursor: pointer;
 }
 
-.lead {
-  text-align: center;
-  padding: 15px;
-  font-size: 1.2em;
-}
-
 #feedbackwindow {
   display: flex;
   flex-direction: column;
   margin-left: 250px;
   margin-right: 250px;
   max-width: 1000px;
+  height: 90vh;
 }
 
 .feedback {
@@ -79,4 +65,11 @@ p, span, div {
   border-bottom-right-radius: 10px;
   max-width: 600px;
   padding: 5px;
+}
+
+#footer {
+  background-color: red;
+  height: 10vh;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
 }
