@@ -45,12 +45,12 @@ const button = document.querySelector('#toggleButton');
 const feedbackwindow = document.querySelector('#feedbackwindow');
 
 button.addEventListener('click', () => {
-  if (button.innerHTML === 'Pause Session') {
+  if (button.innerHTML === 'Stop Speech Recognition') {
     recognition.stop();
-    button.innerHTML = 'Continue';
+    button.innerHTML = 'Start Speech Recognition';
   } else {
     recognition.start();
-    button.innerHTML = 'Pause Session';
+    button.innerHTML = 'Stop Speech Recognition';
   }
 })
 

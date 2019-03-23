@@ -1,6 +1,7 @@
 * {
-  padding: 0;
-  margin: 0;
+  padding: 0px;
+  margin: 0px;
+  font-size: 1em;
 }
 
 #container {
@@ -8,31 +9,10 @@
   flex-direction: column;
 }
 
-p, span, div {
+p, span, div, input {
   font-family: 'Open Sans', sans-serif;
 }
 
-.toggleButtonDiv {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-}
-
-#toggleButton {
-  border-radius: 15px;
-  padding-top: 10px;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  background-color: #9bdfdd;
-}
-
-#toggleButton:hover {
-  cursor: pointer;
-}
-
-#toggleButtonDiv:hover {
-  cursor: pointer;
-}
 
 #feedbackwindow {
   display: flex;
@@ -68,8 +48,36 @@ p, span, div {
 }
 
 #footer {
-  background-color: red;
-  height: 10vh;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  background-color: #8bcae4;
+}
+
+#textEntryBoxDiv {
+  flex-grow: 9;
+}
+
+.textInput {
+  width: 100%;
+  box-shadow: none;
+  appearance: none;
+}
+
+#toggleButton {
+  text-align: center;
+  padding: 2px;
+}
+
+#toggleButtonDiv {
+  flex-grow: 1;
+}
+
+#toggleButton:hover {
+  cursor: pointer;
+}
+
+#toggleButtonDiv:hover {
+  cursor: pointer;
 }
