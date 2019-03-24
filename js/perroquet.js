@@ -1,8 +1,22 @@
-const SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
-const SpeechGrammarList = webkitSpeechGrammarList || SpeechGrammarList;
-const SpeechRecognitionEvent = webkitSpeechRecognitionEvent || SpeechRecognitionEvent;
 
-const recognition = new SpeechRecognition();
+let SpeechRecognition;
+let SpeechGrammarList;
+let SpeechRecognitionEvent;
+let recognition;
+
+if (window.webkitSpeechRecognition || window.SpeechRecognition) {
+  SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+} 
+if (window.webkitSpeechGrammarList || window.SpeechGrammarList) {
+  SpeechGrammarList = webkitSpeechGrammarList || SpeechGrammarList;
+} 
+if (window.webkitSpeechRecognitionEvent || window.SpeechRecognitionEvent) {
+  SpeechRecognitionEvent = webkitSpeechRecognitionEvent || SpeechRecognitionEvent;
+} 
+
+if (SpeechRecognition) {
+  recognition = new SpeechRecognition();
+}
 
 const feedbackwindow = document.querySelector('#feedbackwindow');
 
@@ -111,12 +125,12 @@ function buildInitialResponse() {
   question.innerHTML = 
     initialGreeting[randNum(initialGreeting.length)] + '. ' +
     middleGreeting[randNum(middleGreeting.length)] + '. ' +
-    finalGreeting[randNum(finalGreeting.length)] + '? ' +
-    (SpeechRecognition 
-      ? 
-      'Feel free to use your voice to speak.'
-      :
-      '');
+    finalGreeting[randNum(finalGreeting.length)] + '? ' + '';
+    // (SpeechRecognition 
+    //   ? 
+    //   'Feel free to use your voice to speak.'
+    //   :
+    //   '');
   question.setAttribute('class', 'question initial');
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);
