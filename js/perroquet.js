@@ -9,7 +9,13 @@ const feedbackwindow = document.querySelector('#feedbackwindow');
 const prepend = [
   'Let me just make sure, you are saying', 
   'I see. You are saying',
-  'Uh-huh. So'
+  'Uh-huh. So',
+  'Interesting. You\'re saying',
+  'Oh, so',
+  'I\'m starting to see, yes. You believe',
+  'You believe',
+  'Very astute. You are saying',
+  'Indeed. So'
 ];
 
 const append = [
@@ -17,7 +23,11 @@ const append = [
   'How does that make you feel?',
   'Why do you say that?',
   'Why?',
-  'How would you describe that to your best friend?'
+  'How would you describe that to your best friend?',
+  'Can you explain that further?',
+  'Why do you believe that is so?',
+  'Could you rephrase that in any way?',
+  'Could you shed some more light on that?'
 ];
 
 const initialGreeting = [
@@ -32,7 +42,7 @@ const initialGreeting = [
 const middleGreeting = [
   'I am Dr. Perroquet, and this is my deep listening service',
   'My name is Dr. Perroquet, and I offer this amazing deep listening service for free',
-  'This is your personal deep listening assistant, Dr. Perroquet. I am at your service',
+  'I am your personal deep listening assistant, Dr. Perroquet. I am at your service',
   'Have you ever felt like you just needed someone to listen to you really deeply? I am Dr. Perroquet, and listening is what I do'
 ];
 
