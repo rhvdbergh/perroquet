@@ -4,6 +4,8 @@ const SpeechRecognitionEvent = webkitSpeechRecognitionEvent || SpeechRecognition
 
 const recognition = new SpeechRecognition();
 
+const feedbackwindow = document.querySelector('#feedbackwindow');
+
 const prepend = [
   'Let me just make sure, you are saying', 
   'I see. You are saying',
@@ -15,10 +17,35 @@ const append = [
   'How does that make you feel?',
   'Why do you say that?',
   'Why?',
-  'How would you describe that to your best friend?',
+  'How would you describe that to your best friend?'
+];
+
+const initialGreeting = [
+  'Hello',
+  'Greetings',
+  'Bonjour',
+  'Hi',
+  'Hi there',
+  'Hey'
+];
+
+const middleGreeting = [
+  'I am Dr. Perroquet, and this is my deep listening service',
+  'My name is Dr. Perroquet, and I offer this amazing deep listening service for free',
+  'This is your personal deep listening assistant, Dr. Perroquet. I am at your service',
+  'Have you ever felt like you just needed someone to listen to you really deeply? I am Dr. Perroquet, and listening is what I do'
+];
+
+const finalGreeting = [
+  'How are you feeling today',
+  'What can I help you with today',
+  'Is there anything you want to share with me',
+  'Tell me, what\'s happening in your life',
+  'Why have you decided to attend my virtual office today'
 ];
 
 if (SpeechRecognition) {
+
   let toggleButtonDiv = document.createElement('DIV');
   toggleButtonDiv.setAttribute('id', 'toggleButtonDiv');
   let toggleButton = document.createElement('DIV');
@@ -68,10 +95,29 @@ function replacePronouns(str) {
   return str;
 }
 
+function buildInitialResponse() {
+  let qdiv = document.createElement("DIV");
+  let question = document.createElement("SPAN")
+  question.innerHTML = 
+    initialGreeting[randNum(initialGreeting.length)] + '. ' +
+    middleGreeting[randNum(middleGreeting.length)] + '. ' +
+    finalGreeting[randNum(finalGreeting.length)] + '? ' +
+    (SpeechRecognition 
+      ? 
+      'Feel free to use your voice to speak.'
+      :
+      '');
+  question.setAttribute('class', 'question initial');
+  feedbackwindow.appendChild(qdiv);
+  qdiv.appendChild(question);
+}
+
+buildInitialResponse();
+
 function buildResponse(str) {
   let fbdiv = document.createElement("DIV");
   let feedback = document.createElement("SPAN");
-  if (str[str.length-1] === '.') {
+  if (str[str.length-1] === '.' || str[str.length-1] === '?' || str[str.length-1] === '!') {
     feedback.innerHTML = sentenceCase(str);
   } else {
     feedback.innerHTML = sentenceCase(str) + '.';
@@ -81,7 +127,7 @@ function buildResponse(str) {
   fbdiv.appendChild(feedback);
   let qdiv = document.createElement("DIV");
   let question = document.createElement("SPAN")
-  if (str[str.length-1] === '.') {
+  if (str[str.length-1] === '.' || str[str.length-1] === '?' || str[str.length-1] === '!') {
     question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + append[randNum(append.length)];
   } else {
     question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
@@ -90,8 +136,6 @@ function buildResponse(str) {
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);
 }
-
-const feedbackwindow = document.querySelector('#feedbackwindow');
 
 recognition.onresult = (evt) => {
 

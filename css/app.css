@@ -13,38 +13,51 @@ p, span, div, input {
   font-family: 'Open Sans', sans-serif;
 }
 
-
-#feedbackwindow {
+#feedbackContainer {
   display: flex;
   flex-direction: column;
-  margin-left: 250px;
-  margin-right: 250px;
-  max-width: 1000px;
+}
+
+#right, #left {
+  flex-grow: 1;
+}
+
+#feedbackwindow {
+  margin: auto;
+  flex-grow: 8;
+  display: flex;
+  flex-direction: column;
   height: 90vh;
 }
 
 .feedback {
   float: left;
-  text-align: left;
+  /* text-align: left; */
   background-color: blue;
   color: white;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  max-width: 600px;
+  max-width: 1000px;
   padding: 5px;
+  margin: 5px;
 }
 
 .question {
   float: right;
-  text-align: right;
+  /* text-align: right; */
   background-color: rebeccapurple;
   color: white;
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
-  max-width: 600px;
+  max-width: 800px;
   padding: 5px;
+  margin: 5px;
+}
+
+.initial {
+  margin-top: 30px;
 }
 
 #footer {
