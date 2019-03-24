@@ -147,21 +147,24 @@ function buildResponse(str) {
   qdiv.appendChild(question);
 }
 
-recognition.onresult = (evt) => {
 
-  const len = evt.results.length - 1;
-  let str = '';
+if (SpeechRecognition) {
+  recognition.onresult = (evt) => {
 
-  for (i = evt.resultIndex; i <= len; i++) {
-    str += evt.results[i][0].transcript + ' ';
+    const len = evt.results.length - 1;
+    let str = '';
+
+    for (i = evt.resultIndex; i <= len; i++) {
+      str += evt.results[i][0].transcript + ' ';
+    }
+
+    buildResponse(str);
+
   }
 
-  buildResponse(str);
-
-}
-
-recognition.onend = (evt) => {
-    document.querySelector('#toggleButton').innerHTML = 'Start Speech Recognition';
+  recognition.onend = (evt) => {
+      document.querySelector('#toggleButton').innerHTML = 'Start Speech Recognition';
+  }
 }
 
 const inputForm = document.querySelector('#inputForm');
