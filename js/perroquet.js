@@ -138,9 +138,9 @@ function buildResponse(str) {
   let qdiv = document.createElement("DIV");
   let question = document.createElement("SPAN")
   if (str[str.length-1] === '.' || str[str.length-1] === '?' || str[str.length-1] === '!') {
-    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + append[randNum(append.length)];
+    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim().toLowerCase()) + append[randNum(append.length)];
   } else {
-    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
+    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim().toLowerCase()) + ". " + append[randNum(append.length)];
   }
     question.setAttribute('class', 'question');
   feedbackwindow.appendChild(qdiv);
