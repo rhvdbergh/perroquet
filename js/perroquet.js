@@ -131,7 +131,7 @@ function buildInitialResponse() {
     //   'Feel free to use your voice to speak.'
     //   :
     //   '');
-  question.setAttribute('class', 'question initial');
+  question.setAttribute('class', 'question initial last');
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);
 }
@@ -156,9 +156,15 @@ function buildResponse(str) {
   } else {
     question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim().toLowerCase()) + ". " + append[randNum(append.length)];
   }
-    question.setAttribute('class', 'question');
+  question.setAttribute('class', 'question');
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);
+  let tempClass = document.querySelector('.last').getAttribute('class');
+  tempClass.replace('last', '');
+  document.querySelector('.last').setAttribute('class', tempClass);
+  qdiv.setAttribute('class', 'last');
+  feedbackwindow.scrollTo(0, feedbackwindow.scrollHeight);
+  // document.querySelector('#feedbackContainer').scrollTop = document.querySelector('#feedbackContainer').scrollHeight;
 }
 
 
