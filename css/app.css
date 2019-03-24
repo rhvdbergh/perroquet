@@ -59,7 +59,7 @@ p, span, div, input {
   flex-grow: 9;
 }
 
-.textInput {
+#textInput {
   width: 100%;
   box-shadow: none;
   appearance: none;

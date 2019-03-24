@@ -18,6 +18,33 @@ const append = [
   'How would you describe that to your best friend?',
 ];
 
+if (SpeechRecognition) {
+  let toggleButtonDiv = document.createElement('DIV');
+  toggleButtonDiv.setAttribute('id', 'toggleButtonDiv');
+  let toggleButton = document.createElement('DIV');
+  toggleButton.innerHTML = 'Stop Speech Recognition';
+  toggleButton.setAttribute('id', 'toggleButton');
+  toggleButtonDiv.appendChild(toggleButton);
+  document.getElementById('footer').appendChild(toggleButtonDiv);
+
+  const button = document.querySelector('#toggleButton');
+  button.addEventListener('click', () => {
+    if (button.innerHTML === 'Stop Speech Recognition') {
+      recognition.stop();
+      button.innerHTML = 'Start Speech Recognition';
+    } else {
+      recognition.start();
+      button.innerHTML = 'Stop Speech Recognition';
+    }
+  })
+
+  recognition.continuous = true;
+  recognition.start();
+
+} else {
+  console.log('To use SpeechRecognition, please use a different browser');
+}
+
 function randNum(forLength) {
   return Math.floor(Math.random() * forLength);
 }
@@ -37,25 +64,34 @@ function replacePronouns(str) {
   // str = str.replace(/mine/gi, "yours");
   // str = str.replace(/yours/gi, "mine");
   // str = str.replace(/our/gi, "your");
-
+  
   return str;
 }
 
-const button = document.querySelector('#toggleButton');
-const feedbackwindow = document.querySelector('#feedbackwindow');
-
-button.addEventListener('click', () => {
-  if (button.innerHTML === 'Stop Speech Recognition') {
-    recognition.stop();
-    button.innerHTML = 'Start Speech Recognition';
+function buildResponse(str) {
+  let fbdiv = document.createElement("DIV");
+  let feedback = document.createElement("SPAN");
+  if (str[str.length-1] === '.') {
+    feedback.innerHTML = sentenceCase(str);
   } else {
-    recognition.start();
-    button.innerHTML = 'Stop Speech Recognition';
+    feedback.innerHTML = sentenceCase(str) + '.';
   }
-})
+  feedback.setAttribute('class', 'feedback');
+  feedbackwindow.appendChild(fbdiv);
+  fbdiv.appendChild(feedback);
+  let qdiv = document.createElement("DIV");
+  let question = document.createElement("SPAN")
+  if (str[str.length-1] === '.') {
+    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + append[randNum(append.length)];
+  } else {
+    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
+  }
+    question.setAttribute('class', 'question');
+  feedbackwindow.appendChild(qdiv);
+  qdiv.appendChild(question);
+}
 
-recognition.continuous = true;
-recognition.start();
+const feedbackwindow = document.querySelector('#feedbackwindow');
 
 recognition.onresult = (evt) => {
 
@@ -66,22 +102,22 @@ recognition.onresult = (evt) => {
     str += evt.results[i][0].transcript + ' ';
   }
 
-  let fbdiv = document.createElement("DIV");
-  let feedback = document.createElement("SPAN");
-  feedback.innerHTML = sentenceCase(str) + '.';
-  feedback.setAttribute('class', 'feedback');
-  feedbackwindow.appendChild(fbdiv);
-  fbdiv.appendChild(feedback);
-  let qdiv = document.createElement("DIV");
-  let question = document.createElement("SPAN")
-  question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim()) + ". " + append[randNum(append.length)];
-  question.setAttribute('class', 'question');
-  feedbackwindow.appendChild(qdiv);
-  qdiv.appendChild(question);
+  buildResponse(str);
 
 }
 
 recognition.onend = (evt) => {
-  button.innerHTML = 'Continue';
+    document.querySelector('#toggleButton').innerHTML = 'Start Speech Recognition';
 }
+
+const inputForm = document.querySelector('#inputForm');
+const textInput = document.querySelector('#textInput');
+
+inputForm.addEventListener('submit', (evt) => {
+  evt.preventDefault();
+
+  buildResponse(textInput.value);
+  textInput.value = '';
+
+})
 
