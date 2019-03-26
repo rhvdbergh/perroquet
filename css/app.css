@@ -31,6 +31,8 @@ p, span, div, input {
 }
 
 #feedbackwindow {
+  background-image: url("../paper-fibers.png");
+  /* background-color: rgba(139, 201, 228, 0.658); */
   margin: auto;
   display: flex;
   flex-direction: column;
