@@ -189,6 +189,22 @@ inputForm.addEventListener('submit', (evt) => {
 
   buildResponse(textInput.value);
   textInput.value = '';
+  textInput.blur();
+  // check if this is a mobile device
+  if ( navigator.userAgent.match(/Android/i)
+      || navigator.userAgent.match(/webOS/i)
+      || navigator.userAgent.match(/iPhone/i)
+      || navigator.userAgent.match(/iPad/i)
+      || navigator.userAgent.match(/iPod/i)
+      || navigator.userAgent.match(/BlackBerry/i)
+      || navigator.userAgent.match(/Windows Phone/i)) {
+  } else {
+    textInput.focus();
+  } // end if ... else
 
 })
+
+// textInput.onblur((evt) => {
+//   console.log('blurred');
+// })
 
