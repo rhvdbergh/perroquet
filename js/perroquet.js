@@ -159,14 +159,10 @@ function buildResponse(str) {
   question.setAttribute('class', 'question');
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);
-  let tempClass = document.querySelector('.last').getAttribute('class');
-  tempClass.replace('last', '');
-  document.querySelector('.last').setAttribute('class', tempClass);
-  qdiv.setAttribute('class', 'last');
+  document.querySelector('.last').classList.toggle('last');
+  qdiv.classList.toggle('last');
   feedbackwindow.scrollTo(0, feedbackwindow.scrollHeight);
-  // document.querySelector('#feedbackContainer').scrollTop = document.querySelector('#feedbackContainer').scrollHeight;
 }
-
 
 if (SpeechRecognition) {
   recognition.onresult = (evt) => {
