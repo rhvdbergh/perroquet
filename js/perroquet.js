@@ -23,13 +23,13 @@ const feedbackwindow = document.querySelector('#feedbackwindow');
 const prepend = [
   'Let me just make sure, you are saying', 
   'I see. You are saying',
-  'Uh-huh. So',
+  'Uh-huh. So, what you are saying is',
   'Interesting. You\'re saying',
-  'Oh, so',
-  'I\'m starting to see, yes. You believe',
+  'Oh, so you\'re saying',
+  'I\'m starting to see, yes. You essentially stated',
   'You believe',
-  'Very astute. You are saying',
-  'Indeed. So'
+  'True, true ... with respect to yourself, of course. You are saying',
+  'Indeed. So what you\'re saying is'
 ];
 
 const append = [
@@ -37,11 +37,10 @@ const append = [
   'How does that make you feel?',
   'Why do you say that?',
   'Why?',
-  'How would you describe that to your best friend?',
   'Can you explain that further?',
-  'Why do you believe that is so?',
-  'Could you rephrase that in any way?',
-  'Could you shed some more light on that?'
+  'Could you shed some more light on that?',
+  'Could you dig a little deeper with regard to that?',
+  'How so?'
 ];
 
 const initialGreeting = [
@@ -150,7 +149,7 @@ function buildResponse(str) {
   let qdiv = document.createElement("DIV");
   let question = document.createElement("SPAN")
   if (str[str.length-1] === '.' || str[str.length-1] === '?' || str[str.length-1] === '!') {
-    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim().toLowerCase()) + append[randNum(append.length)];
+    question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim().toLowerCase()) + " " + append[randNum(append.length)];
   } else {
     question.innerHTML=prepend[randNum(prepend.length)] + " " + replacePronouns(str.trim().toLowerCase()) + ". " + append[randNum(append.length)];
   }
