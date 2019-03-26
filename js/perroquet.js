@@ -204,7 +204,3 @@ inputForm.addEventListener('submit', (evt) => {
 
 })
 
-// textInput.onblur((evt) => {
-//   console.log('blurred');
-// })
-

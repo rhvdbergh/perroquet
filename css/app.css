@@ -129,4 +129,8 @@ p, span, div, input {
     flex-grow: 1;
     font-size: 0.9em;
   }
+
+  #hideScrollbar {
+    height: 90vh;
+  }
 }
