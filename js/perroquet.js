@@ -27,7 +27,6 @@ const prepend = [
   'Interesting. You\'re saying',
   'Oh, so you\'re saying',
   'I\'m starting to see, yes. You essentially stated',
-  'You believe',
   'True, true ... with respect to yourself, of course. You are saying',
   'Indeed. So what you\'re saying is'
 ];
