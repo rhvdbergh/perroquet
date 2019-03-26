@@ -76,7 +76,7 @@ if (SpeechRecognition) {
   toggleButton.innerHTML = 'Stop Speech Recognition';
   toggleButton.setAttribute('id', 'toggleButton');
   toggleButtonDiv.appendChild(toggleButton);
-  document.getElementById('footer').appendChild(toggleButtonDiv);
+  document.getElementById('textEntryBoxDiv').appendChild(toggleButtonDiv);
 
   const button = document.querySelector('#toggleButton');
   button.addEventListener('click', () => {
@@ -122,15 +122,13 @@ function replacePronouns(str) {
 function buildInitialResponse() {
   let qdiv = document.createElement("DIV");
   let question = document.createElement("SPAN")
-  question.innerHTML = 
-    initialGreeting[randNum(initialGreeting.length)] + '. ' +
+  textToAdd = initialGreeting[randNum(initialGreeting.length)] + '. ' +
     middleGreeting[randNum(middleGreeting.length)] + '. ' +
     finalGreeting[randNum(finalGreeting.length)] + '? ' + '';
-    // (SpeechRecognition 
-    //   ? 
-    //   'Feel free to use your voice to speak.'
-    //   :
-    //   '');
+  if (SpeechRecognition) {
+    textToAdd += 'Feel free to use your voice to speak.';
+  }
+  question.innerHTML = textToAdd.toUpperCase();
   question.setAttribute('class', 'question initial last');
   feedbackwindow.appendChild(qdiv);
   qdiv.appendChild(question);

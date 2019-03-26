@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Amatic+SC" rel="stylesheet">
   <link rel="stylesheet" href="./css/app.css">
   <title>Perroquet</title>
 </head>
@@ -12,20 +12,21 @@
   <div id="container">
 
     <div id="feedbackContainer">
-      <div id='left'> </div>
-      <div id="feedbackwindow"></div>
+      <div id="left"> </div>
+      <div id="hideScrollbar">
+        <div id="feedbackwindow"></div>
+        <div id="footer">
+          <div id="textEntryBoxDiv">
+            <form action="submit" id="inputForm">
+              <input type="text" id="textInput" placeholder="Type your response here ..." autofocus>
+            </form>
+          </div>
+        </div>
+      </div>
       <div id="right"> </div>
     </div>
       
-    </div>
-    <div id="footer">
-      <div id="textEntryBoxDiv">
-        <form action="submit" id="inputForm">
-          <input type="text" id="textInput" placeholder="Type your response here ..." autofocus>
-        </form>
-      </div>
-    </div>
-  </div>  
+  </div>
 
   <script src="./js/perroquet.js"></script>
 </body>

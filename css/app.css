@@ -1,7 +1,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  font-size: 1em;
+  font-size: 1.08em;
 }
 
 #container {
@@ -10,31 +10,41 @@
 }
 
 p, span, div, input {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Amatic SC', cursive;
 }
 
 #feedbackContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 }
 
 #right, #left {
-  flex-grow: 1;
+  flex-grow: 8;
+}
+
+#hideScrollbar {
+  flex-grow: 8;
+  overflow: hidden;
+  height: 95vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #feedbackwindow {
   margin: auto;
-  flex-grow: 8;
   display: flex;
   flex-direction: column;
-  height: 90vh;
-  overflow: scroll;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
   scroll-behavior: smooth;
+  margin-right: 14px;
+  padding-right: 28px;
+  padding-bottom: 15px;
 }
 
 .feedback {
   float: left;
-  /* text-align: left; */
   background-color: blue;
   color: white;
   border-top-right-radius: 10px;
@@ -47,7 +57,6 @@ p, span, div, input {
 
 .question {
   float: right;
-  /* text-align: right; */
   background-color: rebeccapurple;
   color: white;
   border-top-left-radius: 10px;
@@ -67,26 +76,35 @@ p, span, div, input {
 }
 
 #footer {
-  position: fixed;
-  bottom: 0;
+  /* position: fixed; */
+  /* bottom: 0; */
+  margin-bottom: 30px;
   width: 100%;
-  display: flex;
   background-color: #8bcae4;
 }
 
 #textEntryBoxDiv {
-  flex-grow: 9;
+  display: flex;
+  flex-direction: row;
+}
+
+#inputForm {
+  flex-grow: 3;
 }
 
 #textInput {
   width: 100%;
   box-shadow: none;
   appearance: none;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.02em;
 }
 
 #toggleButton {
   text-align: center;
   padding: 2px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.02em;
 }
 
 #toggleButtonDiv {
@@ -99,4 +117,15 @@ p, span, div, input {
 
 #toggleButtonDiv:hover {
   cursor: pointer;
+}
+
+@media only screen and (max-width: 600px) {
+  #textEntryBoxDiv {
+    flex-direction: column;
+  }
+
+  #inputForm {
+    flex-grow: 1;
+    font-size: 0.9em;
+  }
 }
