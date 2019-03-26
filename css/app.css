@@ -46,7 +46,7 @@ p, span, div, input {
 
 .feedback {
   float: left;
-  background-color: rgb(12, 77, 129);
+  background-color: #0c4d81;
   color: white;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
